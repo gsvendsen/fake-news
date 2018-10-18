@@ -1,8 +1,5 @@
-<h1 align="center">Fake News Feed<h1>
-<p align="center">
+# Fake News Feed
   <img alt="GitPoint" title="GitPoint" src="https://cdn.dribbble.com/users/393983/screenshots/3336307/fake_news_by_laura_guardalabene_for_junk-o.jpg" width="250">
-</p>
-
 
 This is one of my first hand-in assignments where I have to create a Fake News Feed site using HTML, CSS and PHP.
 
