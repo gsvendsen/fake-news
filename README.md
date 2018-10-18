@@ -6,7 +6,10 @@ This is one of my first hand-in assignments where I have to create a Fake News F
 ## Functionality
 By looping over data arrays from `data.php` the site will show a continuous feed containing news items created by authors.
 
+By using the `compareDates` function the array of news items is sorted so that the newest items are shown at the top of the feed
+
 To fetch certain data from different arrays functions from `functions.php`are used.
+
 
 ### To-do:
 - Implement improved styling using a GUI
