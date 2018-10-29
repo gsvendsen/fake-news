@@ -5,7 +5,20 @@ require_once __DIR__.'/data.php';
 require_once __DIR__.'/functions.php';
 
 // Sorts the array $newsItems using callback function comparedates()
-uSort($newsItems, 'compareDates')
+
+
+uSort($newsItems, 'compareDates');
+
+// Reverses array if user selects reverse sorting
+if(isset($_GET['sortBy'])){
+    if($_GET['sortBy'] === 'old'){
+        $newsItems = array_reverse($newsItems);
+    }
+
+    if($_GET['sortBy'] === 'new'){
+        uSort($newsItems, 'compareDates');
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,35 +29,50 @@ uSort($newsItems, 'compareDates')
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Fake News</a>
+            <div class="dropright">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sort By
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="?sortBy=new">New → Old</a>
+                <a class="dropdown-item" href="?sortBy=old">Old → New</a>
+              </div>
+            </div>
         </nav>
         <?php
         // Loops over each item in data array newsItems and creates article with the current item's information
         foreach ($newsItems as $newsItem): ?>
         <div class="row">
-            <div class="col-sm-6 mx-auto m-3">
+            <div class="col-10 col-sm-8 mx-auto m-3">
                 <div class="card">
                     <div class="card-header">
                         <h4><?= $newsItem['title'] ?></h4>
-                    </div>
+                    </div><!-- end card-header -->
                     <div class="card-body">
                         <p><?= $newsItem['content'] ?></p>
-                        <p><?= getUserName($newsItem['author'], $authors); ?></p>
-                        <p class="font-weight-light"><?= $newsItem['publishedDate'] ?></p>
-                        <p>
+                        <div class="row">
+                            <img class="col-2 w-25 h-25 rounded-circle img-fluid" src="img/<?= getUser($newsItem['author'], $authors)['img']?>">
+                            <p class="mt-4"><?= getUser($newsItem['author'], $authors)['name']; ?></p>
                         </div>
-                        <div class="card-footer bg-transparent">
-                            <div class="row">
-                                <p class="m-2">Likes: <?= $newsItem['likeCount'] ?></p>
-                                <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Like</button>
-                            </div>
-                        </div>
-                        </div>
+                        <p class="font-weight-light m-3"><?= $newsItem['publishedDate'] ?></p>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                    <div class="card-footer bg-transparent">
+                        <div class="row">
+                            <p class="m-2">Likes: <?= $newsItem['likeCount'] ?></p>
+                            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Like</button>
+                        </div><!-- end row -->
+                    </div><!-- end card-footer -->
+                </div><!-- end card -->
+            </div><!-- end column -->
+        </div><!-- end row -->
+        <?php endforeach; ?>
 
       </div>
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </html>
