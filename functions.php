@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 /**
- * getUserName Fetches a user's full name using a unique userId
- * @param  string $userId   The userId which is searched for
+ * getUser Fetches a user's data array using a unique userId
+ * @param  int $userId   The userId which is searched for
  * @param  array  $userList List of all users and their information
- * @return string           Returns the user's full name which has the userId
+ * @return string $user  Returns the user's data array
  */
-function getUserName(string $userId, array $userList): string{
+function getUser(int $userId, array $userList): array{
     foreach($userList as $user){
         if ($user['userId'] == $userId) {
-            return $user['name'];
+            return $user;
         }
     }
 }
