@@ -15,3 +15,9 @@ To fetch certain data from different arrays functions from `functions.php`are us
   - Bootstrap
 - Improve documentation in code
 - Make sure code is "clean"
+
+### Testers
+- <a href="https://github.com/rebeccaklaening">Rebecca Klaening</a>
+
+#### License
+MIT License
