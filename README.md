@@ -18,6 +18,8 @@ To fetch certain data from different arrays functions from `functions.php`are us
 
 ### Testers
 - <a href="https://github.com/rebeccaklaening">Rebecca Klaening</a>
+- <a href="https://github.com/Charmaine-wang">Charmaine Wang</a>
+
 
 #### License
 MIT License
