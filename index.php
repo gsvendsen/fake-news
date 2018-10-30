@@ -1,32 +1,33 @@
 <?php
-
 declare(strict_types=1);
 require_once __DIR__.'/data.php';
 require_once __DIR__.'/functions.php';
 
-// Sorts the array $newsItems using callback function comparedates()
-
-
+// Sorts the array $newsItems by default using callback function comparedates() to newest first
 uSort($newsItems, 'compareDates');
 
-// Reverses array if user selects reverse sorting
+// Checks if user has selected a sorting preference
 if(isset($_GET['sortBy'])){
+
+    // Reversed order to oldest first if user selected old
     if($_GET['sortBy'] === 'old'){
         $newsItems = array_reverse($newsItems);
     }
 
+    // Sets order back to default newest if user selected new
     if($_GET['sortBy'] === 'new'){
         uSort($newsItems, 'compareDates');
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Fake News Feed</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -55,21 +56,19 @@ if(isset($_GET['sortBy'])){
                         <div class="row">
                             <img class="col-2 w-25 h-25 rounded-circle img-fluid" src="img/<?= getUser($newsItem['author'], $authors)['img']?>">
                             <p class="mt-4"><?= getUser($newsItem['author'], $authors)['name']; ?></p>
-                        </div>
+                        </div><!-- /row -->
                         <p class="font-weight-light m-3"><?= $newsItem['publishedDate'] ?></p>
-                    </div>
+                    </div><!-- /card-body -->
                     <div class="card-footer bg-transparent">
                         <div class="row">
                             <p class="m-2">Likes: <?= $newsItem['likeCount'] ?></p>
                             <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Like</button>
-                        </div><!-- end row -->
-                    </div><!-- end card-footer -->
-                </div><!-- end card -->
-            </div><!-- end column -->
-        </div><!-- end row -->
+                        </div><!-- /row -->
+                    </div><!-- /card-footer -->
+                </div><!-- /card -->
+            </div><!-- /column -->
+        </div><!-- /row -->
         <?php endforeach; ?>
-
-      </div>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
