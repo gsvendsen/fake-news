@@ -6,15 +6,15 @@ require_once __DIR__.'/functions.php';
 // Sorts the array $newsItems by default using callback function comparedates() to newest first
 uSort($newsItems, 'compareDates');
 
-// Checks if user has selected a sorting preference
+// Checks if user has selected sorting
 if(isset($_GET['sortBy'])){
 
-    // Reversed order to oldest first if user selected old
+    // Sets order of posts to oldest first
     if($_GET['sortBy'] === 'old'){
         $newsItems = array_reverse($newsItems);
     }
 
-    // Sets order back to default newest if user selected new
+    // Sets order of posts to newest first
     if($_GET['sortBy'] === 'new'){
         uSort($newsItems, 'compareDates');
     }
@@ -36,6 +36,7 @@ if(isset($_GET['filterAuthor'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Fake News Feed</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -43,7 +44,7 @@ if(isset($_GET['filterAuthor'])){
         <a class="navbar-brand" href="index.php">Fake News</a>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Sort By
+                Sort By:
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="?sortBy=new">New → Old</a>
@@ -52,7 +53,7 @@ if(isset($_GET['filterAuthor'])){
         </div><!-- /dropdown -->
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filter by Author
+                Filter by Author:
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="index.php">Show All</a>
@@ -90,10 +91,13 @@ if(isset($_GET['filterAuthor'])){
             </div><!-- /column -->
         </div><!-- /row -->
     <?php endforeach; ?>
-
+    <div class="top-button">
+        <p class="up-arrow">⇧</p>
+    </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="js/script.js"></script>
 </html>
