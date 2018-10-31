@@ -8,7 +8,7 @@ This is one of the first hand-in assignments for WU18 at Yrgo where I created a 
 ```
 $ git clone https://github.com/gsvendsen/fake-news.git
 ```
-2. Set up a dedicated webserver document root for the cloned repository
+2. Set up a dedicated webserver with the document root as the cloned repository
 
 ### Features
 - Sort posts by newest or oldest first (newest being default)
