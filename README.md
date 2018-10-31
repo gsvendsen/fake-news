@@ -12,6 +12,7 @@ git clone https://github.com/gsvendsen/fake-news.git
 
 ### Features
 - Sort posts by newest or oldest first (newest being default)
+- Filter posts by author
 
 ### Testers
 - [Rebecca Klaening](https://github.com/rebeccaklaening)
