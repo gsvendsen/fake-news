@@ -1,8 +1,13 @@
+body {
+    font-family:helvetica, sans-serif;
+    background-color: #D9CAB3;
+}
+
 .top-button {
 	width:75px;
 	height:75px;
 	border-radius:50%;
-	background-color:grey;
+	background-color:#404040;
 	position:fixed;
 	bottom:15px;
 	right:15px;
