@@ -16,7 +16,7 @@ function getUser(int $userId, array $userList): array{
 }
 
 /**
- * sortDates Callback function that is used for uSort, sorts two dates at a time
+ * compareDates Callback function that is used for uSort, sorts two dates at a time
  * @param  array $a The first newsItem
  * @param  array $b The second newsItem
  * @return int
