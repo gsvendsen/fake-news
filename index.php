@@ -24,7 +24,7 @@ if(isset($_GET['sortBy'])){
 if(isset($_GET['filterAuthor'])){
     $showAuthor = $_GET['filterAuthor'];
     $newsItems = array_filter($newsItems, function($newsItem) use ($authors) {
-        return(getUser($newsItem['author'], $authors)['name'] == $_GET['filterAuthor']);
+        return(getUser($newsItem['authorId'], $authors)['name'] == $_GET['filterAuthor']);
     });
 }
 ?>
@@ -77,7 +77,7 @@ if(isset($_GET['filterAuthor'])){
                     <div class="card-body">
                         <p><?= $newsItem['content'] ?></p>
                         <div class="row">
-                            <img class="col-2 col-sm-1 w-25 h-25 rounded-circle img-fluid" src="img/<?= $author['img']?>">
+                            <img class="col-xl-1 col-lg-2 col-sm-2 w-25 h-25 rounded-circle img-fluid" src="img/<?= $author['img']?>">
                             <p class="mt-auto md-auto"><?= $author['name']; ?></p>
                         </div><!-- /row -->
                         <p class="font-weight-light m-3">Published : <?= $newsItem['publishedDate'] ?></p>
@@ -95,6 +95,7 @@ if(isset($_GET['filterAuthor'])){
         <p class="up-arrow">⇧</p>
     </div><!-- /top-button -->
 </body>
+<!-- scripts for bootstrap and self-made script.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
