@@ -13,6 +13,7 @@ git clone https://github.com/gsvendsen/fake-news.git
 ### Features
 - Sort posts by newest or oldest first (newest being default)
 - Filter posts by author
+- Click the up-arrow button in the corner to scroll back up to the top of the page
 
 ### Testers
 - [Rebecca Klaening](https://github.com/rebeccaklaening)
