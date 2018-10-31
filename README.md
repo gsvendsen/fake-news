@@ -1,7 +1,7 @@
 # Fake News Feed
   <img alt="GitPoint" title="GitPoint" src="https://cdn.dribbble.com/users/393983/screenshots/3336307/fake_news_by_laura_guardalabene_for_junk-o.jpg" width="250">
 
-This is one of the first hand-in assignments for WU18 at Yrgo where I created a Fake News Feed site using HTML, CSS and PHP.
+This is one of the first hand-in assignments for WU18 at Yrgo where I created a Fake News Feed site using HTML, CSS, PHP and JavaScript.
 
 ### Installation
 1. Clone the repository
