@@ -67,7 +67,7 @@ if(isset($_GET['filterAuthor'])){
     <?php
     // Loops over each item in data array newsItems and creates article with the current item's information
     foreach ($newsItems as $newsItem):
-        $author = getUser($newsItem['author'], $authors)?>
+        $author = getUser($newsItem['authorId'], $authors)?>
         <div class="row">
             <div class="col-10 col-sm-8 mx-auto m-3">
                 <div class="card">
