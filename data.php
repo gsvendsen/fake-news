@@ -77,36 +77,31 @@ $newsItems = [
 
 ];
 
-// Data array containing authors full names and user IDs
-$authors = [
+// Data array containing authors full names, user IDs and profile image data
+ $authors = [
   [
     'name' => 'Ford Ipsum',
     'userId' => 1,
-    'articles' =>  ['Cheesburgers','Glamburgers'],
     'img' => "default.jpeg"
   ],
   [
     'name' => 'Glenn Burger',
     'userId' => 2,
-    'articles' => ['Dingbat','Bourbon'],
     'img' => "default.jpeg"
   ],
   [
     'name' => 'Matthew Lincoln',
     'userId' => 3,
-    'articles' => ['Kodachrome', 'Geometric thoughts'],
     'img' => "default.jpeg"
   ],
   [
     'name' => 'Michael Scott',
     'userId' => 4,
-    'articles' => ['Ray guns?', 'Starbursts...'],
     'img' => "default.jpeg"
   ],
   [
     'name' => 'Andrew Nort',
     'userId' => 5,
-    'articles' => ['Not again','Aviation is a myth'],
     'img' => "default.jpeg"
   ]
 ];
