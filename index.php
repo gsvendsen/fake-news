@@ -19,6 +19,14 @@ if(isset($_GET['sortBy'])){
         uSort($newsItems, 'compareDates');
     }
 }
+
+// Filters feed to show selected author
+if(isset($_GET['filterAuthor'])){
+    $showAuthor = $_GET['filterAuthor'];
+    $newsItems = array_filter($newsItems, function($newsItem) use ($authors) {
+        return(getUser($newsItem['author'], $authors)['name'] == $_GET['filterAuthor']);
+    });
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,19 +37,32 @@ if(isset($_GET['sortBy'])){
         <title>Fake News Feed</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
+
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Fake News</a>
-            <div class="dropright">
+            <a class="navbar-brand" href="index.php">Fake News</a>
+            <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sort By
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="?sortBy=new">New → Old</a>
                 <a class="dropdown-item" href="?sortBy=old">Old → New</a>
-              </div>
-            </div>
+            </div><!-- /dropdown-menu -->
+          </div><!-- /dropright -->
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Filter by Author
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="index.php">Show All</a>
+              <?php foreach ($authors as $author): ?>
+              <a class="dropdown-item" href="?filterAuthor=<?= $author['name'] ?>"><?= $author['name'] ?></a>
+              <?php endforeach; ?>
+          </div><!-- /dropdown-menu -->
+        </div><!-- /dropright -->
         </nav>
+
         <?php
         // Loops over each item in data array newsItems and creates article with the current item's information
         foreach ($newsItems as $newsItem): ?>
@@ -50,7 +71,7 @@ if(isset($_GET['sortBy'])){
                 <div class="card">
                     <div class="card-header">
                         <h4><?= $newsItem['title'] ?></h4>
-                    </div><!-- end card-header -->
+                    </div><!-- /card-header -->
                     <div class="card-body">
                         <p><?= $newsItem['content'] ?></p>
                         <div class="row">
@@ -69,6 +90,7 @@ if(isset($_GET['sortBy'])){
             </div><!-- /column -->
         </div><!-- /row -->
         <?php endforeach; ?>
+
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
